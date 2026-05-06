@@ -10,6 +10,8 @@ service StoreIntegration {
   rpc ResolveCreateProduct (ResolveCreateProductRequest) returns (ResolveCreateProductResponse);
   rpc ResolveManageProduct (ResolveManageProductRequest) returns (ResolveManageProductResponse);
   rpc ResolveOwnerApproval (ResolveOwnerApprovalRequest) returns (ResolveOwnerApprovalResponse);
+  rpc GetCurrentOwnerStore (GetCurrentOwnerStoreRequest) returns (GetCurrentOwnerStoreResponse);
+  rpc GetStoreBySlug (GetStoreBySlugRequest) returns (GetStoreBySlugResponse);
 }
 
 enum CreateProductPolicyAction {
@@ -94,4 +96,30 @@ message ResolveOwnerApprovalData {
 message ResolveOwnerApprovalResponse {
   common.ResponseStatus status = 1;
   ResolveOwnerApprovalData data = 2;
+}
+
+message GetCurrentOwnerStoreRequest {
+  string user_id = 1;
+}
+
+message GetCurrentOwnerStoreData {
+  string store_id = 1;
+}
+
+message GetCurrentOwnerStoreResponse {
+  common.ResponseStatus status = 1;
+  GetCurrentOwnerStoreData data = 2;
+}
+
+message GetStoreBySlugRequest {
+  string slug = 1;
+}
+
+message GetStoreBySlugData {
+  string store_id = 1;
+}
+
+message GetStoreBySlugResponse {
+  common.ResponseStatus status = 1;
+  GetStoreBySlugData data = 2;
 }
