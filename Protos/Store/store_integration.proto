@@ -1,0 +1,97 @@
+syntax = "proto3";
+
+package storeintegration;
+
+import "Common/common.proto";
+
+option csharp_namespace = "Platform.Store.Grpc";
+
+service StoreIntegration {
+  rpc ResolveCreateProduct (ResolveCreateProductRequest) returns (ResolveCreateProductResponse);
+  rpc ResolveManageProduct (ResolveManageProductRequest) returns (ResolveManageProductResponse);
+  rpc ResolveOwnerApproval (ResolveOwnerApprovalRequest) returns (ResolveOwnerApprovalResponse);
+}
+
+enum CreateProductPolicyAction {
+  CREATE_PRODUCT_POLICY_ACTION_UNSPECIFIED = 0;
+  CREATE_PRODUCT_POLICY_ACTION_ALLOWED = 1;
+  CREATE_PRODUCT_POLICY_ACTION_STORE_UNAVAILABLE = 2;
+  CREATE_PRODUCT_POLICY_ACTION_OWNER_REQUIRED_FOR_UNVERIFIED_STORE = 3;
+}
+
+enum ManageProductPolicyAction {
+  MANAGE_PRODUCT_POLICY_ACTION_UNSPECIFIED = 0;
+  MANAGE_PRODUCT_POLICY_ACTION_ALLOWED = 1;
+  MANAGE_PRODUCT_POLICY_ACTION_STORE_UNAVAILABLE = 2;
+  MANAGE_PRODUCT_POLICY_ACTION_CREATOR_INVALID = 3;
+  MANAGE_PRODUCT_POLICY_ACTION_FORBIDDEN = 4;
+}
+
+enum OwnerApprovalPolicyAction {
+  OWNER_APPROVAL_POLICY_ACTION_UNSPECIFIED = 0;
+  OWNER_APPROVAL_POLICY_ACTION_PUBLISH_ACTIVE = 1;
+  OWNER_APPROVAL_POLICY_ACTION_MOVE_PENDING_OWNER_REVIEW = 2;
+  OWNER_APPROVAL_POLICY_ACTION_MOVE_PENDING_ADMIN_REVIEW = 3;
+  OWNER_APPROVAL_POLICY_ACTION_USE_ADMIN_APPROVAL = 4;
+  OWNER_APPROVAL_POLICY_ACTION_FORBIDDEN_STORE_MEMBERSHIP = 5;
+  OWNER_APPROVAL_POLICY_ACTION_FORBIDDEN_CREATOR_ONLY = 6;
+  OWNER_APPROVAL_POLICY_ACTION_FORBIDDEN_OWNER_ONLY_UNVERIFIED = 7;
+  OWNER_APPROVAL_POLICY_ACTION_FORBIDDEN_OWNER_ONLY_APPROVE = 8;
+  OWNER_APPROVAL_POLICY_ACTION_CREATOR_INVALID = 9;
+  OWNER_APPROVAL_POLICY_ACTION_NOT_READY = 10;
+}
+
+enum ProductApprovalStatus {
+  PRODUCT_APPROVAL_STATUS_UNSPECIFIED = 0;
+  PRODUCT_APPROVAL_STATUS_DRAFT = 1;
+  PRODUCT_APPROVAL_STATUS_PENDING_OWNER_REVIEW = 2;
+  PRODUCT_APPROVAL_STATUS_PENDING_ADMIN_REVIEW = 3;
+  PRODUCT_APPROVAL_STATUS_ACTIVE = 4;
+  PRODUCT_APPROVAL_STATUS_INACTIVE = 5;
+  PRODUCT_APPROVAL_STATUS_DELETED = 6;
+}
+
+message ResolveCreateProductRequest {
+  string user_id = 1;
+}
+
+message ResolveCreateProductData {
+  CreateProductPolicyAction action = 1;
+  string store_id = 2;
+}
+
+message ResolveCreateProductResponse {
+  common.ResponseStatus status = 1;
+  ResolveCreateProductData data = 2;
+}
+
+message ResolveManageProductRequest {
+  string user_id = 1;
+  string store_id = 2;
+  string creator_user_id = 3;
+}
+
+message ResolveManageProductData {
+  ManageProductPolicyAction action = 1;
+}
+
+message ResolveManageProductResponse {
+  common.ResponseStatus status = 1;
+  ResolveManageProductData data = 2;
+}
+
+message ResolveOwnerApprovalRequest {
+  string user_id = 1;
+  string store_id = 2;
+  string creator_user_id = 3;
+  ProductApprovalStatus product_status = 4;
+}
+
+message ResolveOwnerApprovalData {
+  OwnerApprovalPolicyAction action = 1;
+}
+
+message ResolveOwnerApprovalResponse {
+  common.ResponseStatus status = 1;
+  ResolveOwnerApprovalData data = 2;
+}
