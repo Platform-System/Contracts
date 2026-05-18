@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package paymentintegration;
+
+import "Common/common.proto";
+
+option csharp_namespace = "Platform.Payment.Grpc";
+
+service PaymentIntegration {
+  rpc CreatePaymentLink (CreatePaymentLinkRequest) returns (CreatePaymentLinkResponse);
+}
+
+message PaymentItem {
+  string name = 1;
+  int32 quantity = 2;
+  int64 price = 3;
+}
+
+message CreatePaymentLinkRequest {
+  string reference_type = 1;
+  string reference_id = 2;
+  int64 reference_code = 3;
+  string provider = 4;
+  int64 amount = 5;
+  string currency = 6;
+  string description = 7;
+  repeated PaymentItem items = 8;
+}
+
+message PaymentLinkData {
+  string payment_id = 1;
+  string checkout_url = 2;
+  string payment_link_id = 3;
+  int64 amount = 4;
+  string currency = 5;
+  string status = 6;
+}
+
+message CreatePaymentLinkResponse {
+  common.ResponseStatus status = 1;
+  PaymentLinkData data = 2;
+}
