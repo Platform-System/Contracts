@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package walletintegration;
+
+import "Common/common.proto";
+
+option csharp_namespace = "Platform.Wallet.Grpc";
+
+service WalletIntegration {
+  rpc EnsureWallet (EnsureWalletRequest) returns (EnsureWalletResponse);
+  rpc PayOrder (PayOrderRequest) returns (PayOrderResponse);
+}
+
+message EnsureWalletRequest {
+  string user_id = 1;
+}
+
+message EnsureWalletData {
+  string wallet_id = 1;
+  string user_id = 2;
+  int64 balance = 3;
+}
+
+message EnsureWalletResponse {
+  common.ResponseStatus status = 1;
+  EnsureWalletData data = 2;
+}
+
+message PayOrderRequest {
+  string user_id = 1;
+  string order_id = 2;
+  int64 order_code = 3;
+  int64 amount = 4;
+  string currency = 5;
+  string description = 6;
+}
+
+message PayOrderData {
+  string wallet_id = 1;
+  string transaction_id = 2;
+  int64 amount = 3;
+  int64 balance_after = 4;
+  string currency = 5;
+}
+
+message PayOrderResponse {
+  common.ResponseStatus status = 1;
+  PayOrderData data = 2;
+}
