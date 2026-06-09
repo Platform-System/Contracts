@@ -8,6 +8,7 @@ option csharp_namespace = "Platform.Payment.Grpc";
 
 service PaymentIntegration {
   rpc CreatePaymentLink (CreatePaymentLinkRequest) returns (CreatePaymentLinkResponse);
+  rpc GetPaymentStatus (GetPaymentStatusRequest) returns (GetPaymentStatusResponse);
 }
 
 message PaymentItem {
@@ -39,4 +40,28 @@ message PaymentLinkData {
 message CreatePaymentLinkResponse {
   common.ResponseStatus status = 1;
   PaymentLinkData data = 2;
+}
+
+message GetPaymentStatusRequest {
+  string reference_type = 1;
+  string reference_id = 2;
+  int64 reference_code = 3;
+}
+
+message PaymentStatusData {
+  string payment_id = 1;
+  string reference_type = 2;
+  string reference_id = 3;
+  int64 reference_code = 4;
+  string provider = 5;
+  string payment_link_id = 6;
+  int64 amount = 7;
+  string currency = 8;
+  string status = 9;
+  string paid_at = 10;
+}
+
+message GetPaymentStatusResponse {
+  common.ResponseStatus status = 1;
+  PaymentStatusData data = 2;
 }
