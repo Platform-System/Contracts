@@ -41,6 +41,7 @@ message StockAdjustmentItem {
 
 message AdjustStockRequest {
   repeated StockAdjustmentItem items = 1;
+  string operation_id = 2;
 }
 
 message AdjustStockResponse {
