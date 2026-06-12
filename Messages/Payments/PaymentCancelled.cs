@@ -2,6 +2,7 @@ namespace Platform.Contracts.Messages.Payments;
 
 public sealed class PaymentCancelled
 {
+    public Guid MessageId { get; set; }
     public Guid PaymentId { get; set; }
     public string ReferenceType { get; set; } = string.Empty;
     public Guid ReferenceId { get; set; }

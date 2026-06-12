@@ -7,6 +7,7 @@ public static class PaymentStatusSnapshotMapper
     public static PaymentSucceeded ToPaymentSucceeded(this PaymentStatusSnapshot snapshot)
         => new()
         {
+            MessageId = Guid.NewGuid(),
             PaymentId = snapshot.PaymentId,
             ReferenceType = snapshot.ReferenceType,
             ReferenceId = snapshot.ReferenceId,
@@ -21,6 +22,7 @@ public static class PaymentStatusSnapshotMapper
     public static PaymentCancelled ToPaymentCancelled(this PaymentStatusSnapshot snapshot, string reasonCode = "RECONCILIATION")
         => new()
         {
+            MessageId = Guid.NewGuid(),
             PaymentId = snapshot.PaymentId,
             ReferenceType = snapshot.ReferenceType,
             ReferenceId = snapshot.ReferenceId,
