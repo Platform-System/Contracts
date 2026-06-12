@@ -2,6 +2,7 @@ namespace Platform.Contracts.Messages.Emails;
 
 public class OrderInvoiceEmailRequested
 {
+    public Guid MessageId { get; set; }
     public Guid UserId { get; set; }
     public long OrderCode { get; set; }
     public long TotalAmount { get; set; }
