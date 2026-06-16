@@ -1,0 +1,10 @@
+namespace Platform.Contracts.Messages.Identity;
+
+public sealed class IdentityUserRegistered
+{
+    public Guid MessageId { get; set; }
+    public Guid UserId { get; set; }
+    public string UserName { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+    public DateTime OccurredAt { get; set; }
+}
