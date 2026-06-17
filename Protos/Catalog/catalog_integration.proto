@@ -6,15 +6,12 @@ import "Common/common.proto";
 
 option csharp_namespace = "Platform.Catalog.Grpc";
 
-// Catalog sở hữu dữ liệu product, stock và quyền upload cover.
+// Catalog sở hữu dữ liệu product và stock.
 // Service khác gọi qua gRPC contract này thay vì truy cập trực tiếp CatalogDb.
 service CatalogIntegration {
   rpc GetProductCartSnapshot (GetProductCartSnapshotRequest) returns (GetProductCartSnapshotResponse);
   rpc DecreaseStock (AdjustStockRequest) returns (AdjustStockResponse);
   rpc RestoreStock (AdjustStockRequest) returns (AdjustStockResponse);
-  rpc AuthorizeProductCoverUpload (AuthorizeProductCoverUploadRequest) returns (AuthorizeProductCoverUploadResponse);
-  rpc SetProductCover (SetProductCoverRequest) returns (SetProductCoverResponse);
-  rpc SetProductMedias (SetProductMediasRequest) returns (SetProductMediasResponse);
 }
 
 message GetProductCartSnapshotRequest {
@@ -45,55 +42,5 @@ message AdjustStockRequest {
 }
 
 message AdjustStockResponse {
-  common.ResponseStatus status = 1;
-}
-
-message AuthorizeProductCoverUploadRequest {
-  string product_id = 1;
-  string user_id = 2;
-  repeated string roles = 3;
-}
-
-enum ProductCoverUploadVisibility {
-  PRODUCT_COVER_UPLOAD_VISIBILITY_UNSPECIFIED = 0;
-  PRODUCT_COVER_UPLOAD_VISIBILITY_PRIVATE = 1;
-  PRODUCT_COVER_UPLOAD_VISIBILITY_PUBLIC = 2;
-}
-
-message AuthorizeProductCoverUploadResponse {
-  common.ResponseStatus status = 1;
-  ProductCoverUploadAuthorizationData data = 2;
-}
-
-message ProductCoverUploadAuthorizationData {
-  ProductCoverUploadVisibility visibility = 1;
-}
-
-message UploadedFileInfo {
-  string blob_name = 1;
-  string container_name = 2;
-  string file_name = 3;
-  string content_type = 4;
-  int64 size = 5;
-  string alt_text = 6;
-}
-
-message SetProductCoverRequest {
-  string product_id = 1;
-  string user_id = 2;
-  UploadedFileInfo cover = 3;
-}
-
-message SetProductCoverResponse {
-  common.ResponseStatus status = 1;
-}
-
-message SetProductMediasRequest {
-  string product_id = 1;
-  string user_id = 2;
-  repeated UploadedFileInfo items = 3;
-}
-
-message SetProductMediasResponse {
   common.ResponseStatus status = 1;
 }
