@@ -4,7 +4,7 @@ namespace Platform.Contracts.Payments;
 
 public static class PaymentStatusSnapshotMapper
 {
-    public static PaymentSucceeded ToPaymentSucceeded(this PaymentStatusSnapshot snapshot)
+    public static PaymentSucceeded ToPaymentSucceeded(this PaymentStatusSnapshot snapshot, DateTime fallbackPaidAt)
         => new()
         {
             MessageId = Guid.NewGuid(),
@@ -16,7 +16,7 @@ public static class PaymentStatusSnapshotMapper
             PaymentLinkId = snapshot.PaymentLinkId,
             Amount = snapshot.Amount,
             Currency = snapshot.Currency,
-            PaidAt = snapshot.PaidAt ?? DateTime.UtcNow
+            PaidAt = snapshot.PaidAt ?? fallbackPaidAt
         };
 
     public static PaymentCancelled ToPaymentCancelled(this PaymentStatusSnapshot snapshot, string reasonCode = "RECONCILIATION")
