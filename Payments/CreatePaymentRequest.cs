@@ -10,4 +10,5 @@ public sealed class CreatePaymentRequest
     public string Currency { get; set; } = "VND";
     public string Description { get; set; } = string.Empty;
     public List<CreatePaymentItem> Items { get; set; } = [];
+    public Guid UserId { get; set; }
 }

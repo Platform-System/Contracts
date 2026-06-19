@@ -26,6 +26,7 @@ message CreatePaymentLinkRequest {
   string currency = 6;
   string description = 7;
   repeated PaymentItem items = 8;
+  string user_id = 9;
 }
 
 message PaymentLinkData {
