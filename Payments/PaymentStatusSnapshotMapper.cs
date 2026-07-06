@@ -7,7 +7,7 @@ public static class PaymentStatusSnapshotMapper
     public static PaymentSucceeded ToPaymentSucceeded(this PaymentStatusSnapshot snapshot, DateTime fallbackPaidAt)
         => new()
         {
-            MessageId = Guid.NewGuid(),
+            MessageId = Guid.CreateVersion7(),
             PaymentId = snapshot.PaymentId,
             ReferenceType = snapshot.ReferenceType,
             ReferenceId = snapshot.ReferenceId,
@@ -22,7 +22,7 @@ public static class PaymentStatusSnapshotMapper
     public static PaymentCancelled ToPaymentCancelled(this PaymentStatusSnapshot snapshot, string reasonCode = "RECONCILIATION")
         => new()
         {
-            MessageId = Guid.NewGuid(),
+            MessageId = Guid.CreateVersion7(),
             PaymentId = snapshot.PaymentId,
             ReferenceType = snapshot.ReferenceType,
             ReferenceId = snapshot.ReferenceId,
