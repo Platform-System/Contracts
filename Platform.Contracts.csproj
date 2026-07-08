@@ -16,6 +16,7 @@
     <Protobuf Include="Protos\Common\common.proto" GrpcServices="None" />
     <Protobuf Include="Protos\Catalog\catalog_integration.proto" GrpcServices="Client" AdditionalImportDirs="Protos" />
     <Protobuf Include="Protos\Store\store_integration.proto" GrpcServices="Client" AdditionalImportDirs="Protos" />
+    <Protobuf Include="Protos\Identity\identity_integration.proto" GrpcServices="Client" AdditionalImportDirs="Protos" />
   </ItemGroup>
 
 </Project>

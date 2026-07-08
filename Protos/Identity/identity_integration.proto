@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package identityintegration;
+
+import "Common/common.proto";
+
+option csharp_namespace = "Platform.Identity.Grpc";
+
+service IdentityIntegration {
+  rpc CheckUserExists (CheckUserExistsRequest) returns (CheckUserExistsResponse);
+}
+
+message CheckUserExistsRequest {
+  string user_id = 1;
+}
+
+message CheckUserExistsResponse {
+  common.ResponseStatus status = 1;
+  bool exists = 2;
+}
