@@ -4,7 +4,7 @@ package walletintegration;
 
 import "Common/common.proto";
 
-option csharp_namespace = "Platform.Wallet.Grpc";
+option csharp_namespace = "Wallet.Grpc";
 
 service WalletIntegration {
   rpc PayOrder (PayOrderRequest) returns (PayOrderResponse);

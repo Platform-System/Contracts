@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package common;
 
-option csharp_namespace = "Platform.Common.Grpc";
+option csharp_namespace = "Common.Grpc";
 
 message ResponseStatus {
   bool is_success = 1;

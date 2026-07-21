@@ -1,6 +1,6 @@
-using Platform.Contracts.Messages.Payments;
+using Contracts.Messages.Payments;
 
-namespace Platform.Contracts.Payments;
+namespace Contracts.Payments;
 
 public static class PaymentStatusSnapshotMapper
 {

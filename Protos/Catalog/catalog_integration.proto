@@ -4,7 +4,7 @@ package catalogintegration;
 
 import "Common/common.proto";
 
-option csharp_namespace = "Platform.Catalog.Grpc";
+option csharp_namespace = "Catalog.Grpc";
 
 // Catalog sở hữu dữ liệu product và stock.
 // Service khác gọi qua gRPC contract này thay vì truy cập trực tiếp CatalogDb.

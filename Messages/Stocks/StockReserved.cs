@@ -1,4 +1,4 @@
-namespace Platform.Contracts.Messages.Stocks;
+namespace Contracts.Messages.Stocks;
 
 public sealed class StockReserved
 {

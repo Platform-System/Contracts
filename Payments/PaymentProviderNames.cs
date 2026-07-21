@@ -1,4 +1,4 @@
-namespace Platform.Contracts.Payments;
+namespace Contracts.Payments;
 
 public static class PaymentProviderNames
 {

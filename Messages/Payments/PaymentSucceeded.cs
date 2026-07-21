@@ -1,4 +1,4 @@
-namespace Platform.Contracts.Messages.Payments;
+namespace Contracts.Messages.Payments;
 
 public sealed class PaymentSucceeded
 {

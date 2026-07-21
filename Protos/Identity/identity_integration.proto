@@ -4,7 +4,7 @@ package identityintegration;
 
 import "Common/common.proto";
 
-option csharp_namespace = "Platform.Identity.Grpc";
+option csharp_namespace = "Identity.Grpc";
 
 service IdentityIntegration {
   rpc CheckUserExists (CheckUserExistsRequest) returns (CheckUserExistsResponse);

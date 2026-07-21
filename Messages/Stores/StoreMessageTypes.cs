@@ -1,4 +1,4 @@
-namespace Platform.Contracts.Messages.Stores;
+namespace Contracts.Messages.Stores;
 
 public static class StoreMessageTypes
 {

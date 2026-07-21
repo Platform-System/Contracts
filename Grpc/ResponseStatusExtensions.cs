@@ -1,4 +1,4 @@
-namespace Platform.Common.Grpc;
+namespace Common.Grpc;
 
 public static class ResponseStatusExtensions
 {

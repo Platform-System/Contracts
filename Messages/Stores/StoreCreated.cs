@@ -1,6 +1,6 @@
 using System;
 
-namespace Platform.Contracts.Messages.Stores;
+namespace Contracts.Messages.Stores;
 
 public sealed class StoreCreated
 {

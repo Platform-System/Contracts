@@ -1,4 +1,4 @@
-namespace Platform.Contracts.Messages.Identity;
+namespace Contracts.Messages.Identity;
 
 public sealed class IdentityUserRegistered
 {

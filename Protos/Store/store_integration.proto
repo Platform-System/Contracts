@@ -4,7 +4,7 @@ package storeintegration;
 
 import "Common/common.proto";
 
-option csharp_namespace = "Platform.Store.Grpc";
+option csharp_namespace = "Store.Grpc";
 
 service StoreIntegration {
   rpc ResolveCreateProduct (ResolveCreateProductRequest) returns (ResolveCreateProductResponse);

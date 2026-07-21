@@ -1,4 +1,4 @@
-namespace Platform.Contracts.Messages.Emails;
+namespace Contracts.Messages.Emails;
 
 public class OrderInvoiceEmailRequested
 {
