@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package cartintegration;
+
+import "Common/common.proto";
+
+option csharp_namespace = "Cart.Grpc";
+
+service CartIntegration {
+  rpc GetCurrentCart (GetCurrentCartRequest) returns (GetCurrentCartResponse);
+  rpc ClearCurrentCart (ClearCurrentCartRequest) returns (ClearCurrentCartResponse);
+}
+
+message GetCurrentCartRequest {
+  string user_id = 1;
+}
+
+message ClearCurrentCartRequest {
+  string user_id = 1;
+}
+
+message CartItemData {
+  string id = 1;
+  string product_id = 2;
+  string name = 3;
+  int64 price = 4;
+  int32 quantity = 5;
+}
+
+message CartData {
+  string id = 1;
+  string user_id = 2;
+  repeated CartItemData items = 3;
+  int64 total_amount = 4;
+}
+
+message GetCurrentCartResponse {
+  common.ResponseStatus status = 1;
+  CartData data = 2;
+}
+
+message ClearCurrentCartResponse {
+  common.ResponseStatus status = 1;
+}
