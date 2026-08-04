@@ -1,5 +1,3 @@
-using System;
-
 namespace Contracts.Messages.Stores;
 
 public sealed class StoreCreated
